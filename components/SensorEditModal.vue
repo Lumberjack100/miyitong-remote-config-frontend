@@ -89,7 +89,7 @@
                   </div>
                   <div class="form-group">
                     <label class="form-label">采集项单位</label>
-                    <input v-model="field.engUnit" type="text" class="input" placeholder="请输入采集项单位"
+                    <input v-model="field.engUnit" type="text" class="input" placeholder=""
                       :class="{ 'border-red-500': getFieldError(index, 'engUnit') }" maxlength="10" />
                     <p v-if="getFieldError(index, 'engUnit')" class="error-text">
                       {{ getFieldError(index, 'engUnit') }}
@@ -316,10 +316,7 @@ function validateForm(): boolean {
       isValid = false;
     }
 
-    if (!field.engUnit.trim()) {
-      fieldError.engUnit = '请输入采集项单位';
-      isValid = false;
-    } else if (field.engUnit.length > 10) {
+    if (field.engUnit.trim() && field.engUnit.length > 10) {
       fieldError.engUnit = '采集项单位不能超过10个字符';
       isValid = false;
     }
